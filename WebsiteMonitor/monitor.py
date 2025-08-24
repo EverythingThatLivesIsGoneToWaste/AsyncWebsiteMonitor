@@ -1,7 +1,7 @@
 import asyncio
 import aiohttp
 from checker import check_site
-from config import WEBSITES
+from config import WEBSITES, MAX_CONCURRENT_REQUESTS
 
 
 class WebsiteMonitor:
@@ -10,7 +10,13 @@ class WebsiteMonitor:
 
     async def check_all_websites(self):
         """Проверяет все вебсайты из списка в конфиге"""
-        async with aiohttp.ClientSession() as session:
+        connector = aiohttp.TCPConnector(
+            limit=MAX_CONCURRENT_REQUESTS,
+            limit_per_host=5,
+            ttl_dns_cache=300,
+            enable_cleanup_closed=True)
+
+        async with aiohttp.ClientSession(connector=connector) as session:
             tasks = []
             for url in WEBSITES:
                 task = asyncio.create_task(check_site(session, url))

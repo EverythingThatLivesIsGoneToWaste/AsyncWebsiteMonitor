@@ -3,7 +3,7 @@ WEBSITES = [
     "https://github.com",
     "https://stackoverflow.com",
     "https://planner5d.com",
-    "https://deepseek.com"
+    "https://www.deepseek.com"
 ]
 
 CHECK_INTERVAL = 10

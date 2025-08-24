@@ -24,6 +24,7 @@ async def async_kitchen():
     print("Coroutines created, but not yet activated")
     results = await asyncio.gather(coroutine1, coroutine2, coroutine3, return_exceptions=True)
     end = time.time()
+
     print(f"[{end-start:.2f}]\nResults: {results}")
 
 asyncio.run(async_kitchen())

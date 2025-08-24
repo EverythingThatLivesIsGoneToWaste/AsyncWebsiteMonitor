@@ -17,7 +17,8 @@ async def check_site(session, url):
                 'url': url,
                 'status': response.status,
                 'response_time': round(response_time, 2),
-                'timestamp': start_time,
+                'start_time': start_time,
+                'end_time': end_time,
                 'success': True
             }
 
@@ -26,6 +27,7 @@ async def check_site(session, url):
             'url': url,
             'status': 'ERROR',
             'error': str(e),
-            'timestamp': datetime.now(),
+            'start_time': start_time,
+            'end_time': datetime.now(),
             'success': False
         }

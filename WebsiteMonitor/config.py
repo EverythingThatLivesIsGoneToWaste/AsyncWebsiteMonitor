@@ -6,7 +6,7 @@ WEBSITES = [
     "https://www.deepseek.com"
 ]
 
-CHECK_INTERVAL = 10
+CHECK_INTERVAL = 20
 
 TIMEOUT = 10
 

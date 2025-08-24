@@ -28,7 +28,20 @@ class WebsiteMonitor:
 
     def print_results(self):
         """Выводит результаты в консоль"""
-        print(f"\nComplete: {self.results[0]['timestamp']}")
+        if not self.results:
+            print("No results")
+            return
+
+        start_times = [result['start_time'] for result in self.results]
+        end_times = [result['end_time'] for result in self.results]
+
+        overall_start = min(start_times)
+        overall_end = max(end_times)
+        total_duration = (overall_end - overall_start).total_seconds()
+
+        print(f"\nStart: {overall_start}")
+        print(f"End:  {overall_end}")
+        print(f"Overall:     {total_duration:.2f} seconds")
         print(f"{'=' * 50}")
 
         for result in self.results:

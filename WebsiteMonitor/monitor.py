@@ -39,14 +39,17 @@ class WebsiteMonitor:
         overall_end = max(end_times)
         total_duration = (overall_end - overall_start).total_seconds()
 
-        print(f"\nStart: {overall_start}")
-        print(f"End:  {overall_end}")
-        print(f"Overall:     {total_duration:.2f} seconds")
+        print(f"Start:   {overall_start}")
+        print(f"End:     {overall_end}")
+        print(f"Overall: {total_duration:.2f} seconds")
         print(f"{'=' * 50}")
+
+        max_url_length = max(len(result['url']) for result in self.results)
 
         for result in self.results:
             if result['success']:
-                status = "✅ OK" if result['status'] == 200 else "⚠️ WARN"
-                print(f"{status} {result['url']} - {result['status']} ({result['response_time']}s)")
+                status = "✅ OK  " if result['status'] == 200 else "⚠️ WARN"
+                print(f"{status} {result['url'].ljust(max_url_length)} - {result['status']} ({result['response_time']}s)")
             else:
-                print(f"❌ FAIL {result['url']} - {result['error']}")
+                print(f"❌ FAIL {result['url'].ljust(max_url_length)} - {result['error']}")
+        print()

@@ -10,6 +10,7 @@ class WebsiteMonitor:
 
     async def check_all_websites(self):
         """Проверяет все вебсайты из списка в конфиге"""
+
         connector = aiohttp.TCPConnector(
             limit=MAX_CONCURRENT_REQUESTS,
             limit_per_host=5,

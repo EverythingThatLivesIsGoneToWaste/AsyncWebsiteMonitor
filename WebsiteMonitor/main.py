@@ -12,6 +12,7 @@ async def main():
         while True:
             await monitor.check_all_websites()
             monitor.print_results()
+
             await asyncio.sleep(CHECK_INTERVAL)
 
     except (Exception, asyncio.CancelledError) as e:

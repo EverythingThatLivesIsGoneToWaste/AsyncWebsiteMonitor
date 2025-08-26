@@ -12,11 +12,10 @@ async def main():
         while True:
             await monitor.check_all_websites()
             monitor.print_results()
-
             await asyncio.sleep(CHECK_INTERVAL)
 
     except (Exception, asyncio.CancelledError) as e:
-        print(f"\nMonitoring stopped.\n{str(e)}")
+        print(f"\nMonitoring stopped.{str(e)}")
 
 if __name__ == "__main__":
     asyncio.run(main())

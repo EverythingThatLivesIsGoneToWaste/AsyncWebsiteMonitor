@@ -9,7 +9,9 @@ class WebsiteMonitor:
         self.results = []
 
     async def check_all_websites(self):
-        """Проверяет все вебсайты из списка в конфиге"""
+        """
+        Проверяет все вебсайты из списка в конфиге
+        """
 
         connector = aiohttp.TCPConnector(
             limit=MAX_CONCURRENT_REQUESTS,
@@ -28,7 +30,10 @@ class WebsiteMonitor:
             return results
 
     def print_results(self):
-        """Выводит результаты в консоль"""
+        """
+        Выводит результаты в консоль
+        """
+
         if not self.results:
             print("No results")
             return

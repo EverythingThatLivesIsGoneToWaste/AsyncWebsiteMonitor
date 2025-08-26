@@ -6,6 +6,7 @@ async def check_site(session, url):
     """
     Проверяет доступность одного сайта
     """
+
     start_time = datetime.now()
 
     try:

@@ -14,7 +14,7 @@ async def main():
             monitor.print_results()
             await asyncio.sleep(CHECK_INTERVAL)
 
-    except (Exception, KeyboardInterrupt) as e:
+    except (Exception, asyncio.CancelledError) as e:
         print(f"\nMonitoring stopped.\n{str(e)}")
 
 if __name__ == "__main__":
